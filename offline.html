@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline - AufanT</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .offline-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2em;
+            min-height: 70vh;
+        }
+
+        .offline-icon {
+            font-size: 5em;
+            margin-bottom: 0.5em;
+        }
+
+        .offline-container h2 {
+            color: var(--accent-color);
+            margin-bottom: 0.5em;
+        }
+
+        .offline-container p {
+            margin-bottom: 1em;
+            max-width: 500px;
+        }
+
+        .btn-retry {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 0.75em 2em;
+            border-radius: 4px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 1em;
+        }
+
+        .btn-retry:hover {
+            background-color: #7a1f22;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Offline</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="offline-container">
+            <div class="offline-icon">📡❌</div>
+            <h2>Tidak Ada Koneksi Internet</h2>
+            <p>Maaf, sepertinya Anda sedang offline. Halaman ini memerlukan koneksi internet untuk dimuat.</p>
+            <p>Silakan periksa koneksi internet Anda dan coba lagi.</p>
+            <button class="btn-retry" onclick="window.location.reload()">Coba Lagi</button>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Aufan Taufiqurrahman</p>
+    </footer>
+</body>
+</html>

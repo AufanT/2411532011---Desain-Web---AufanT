@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - AufanT</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#942428">
+    <link rel="apple-touch-icon" href="icon-192x192.png">
+</head>
+<body>
+    <header>
+        <h1>Contact</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <div class="form-container">
+            <h2>Kirim Pesan Langsung</h2>
+            
+            <form action="#" method="post" onsubmit="alert('Form berhasil dikirim'); return false;">
+                
+                <div>
+                    <label for="nama">Nama:</label>
+                    <input type="text" id="nama" name="nama_pengunjung" placeholder="Masukkan nama anda..." required>
+                </div>
+
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email_pengunjung" placeholder="example@email.com" required>
+                </div>
+
+                <div>
+                    <label for="kategori">Kategori Pesan:</label>
+                    <select id="kategori" name="kategori_pesan">
+                        <option value="pertanyaan">Pertanyaan</option>
+                        <option value="saran">Saran</option>
+                        <option value="masalah">Masalah</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="pesan">Pesan:</label>
+                    <textarea id="pesan" name="isi_pesan" rows="5" placeholder="Ketik sesuatu..." required></textarea>
+                </div>
+
+                <fieldset>
+                    <legend>Apakah Anda ingin menerima balasan?</legend>
+                    <div>
+                        <input type="radio" id="balas_ya" name="opsi_balasan" value="ya" checked>
+                        <label for="balas_ya">Ya</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="balas_tidak" name="opsi_balasan" value="tidak">
+                        <label for="balas_tidak">Tidak</label>
+                    </div>
+                </fieldset>
+
+                <div>
+                    <input type="submit" value="Kirim Pesan">
+                </div>
+
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Aufan Taufiqurrahman</p>
+    </footer>
+</body>
+</html>
