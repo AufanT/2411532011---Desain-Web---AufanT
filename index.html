@@ -7,7 +7,10 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#942428">
-    <link rel="apple-touch-icon" href="icon-192x192.png">
+
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" href="icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="icon2.jpg">
 </head>
 <body>
     <header>
@@ -22,38 +25,36 @@
     </header>
 
     <main class="home-page">
-        <h2>Selamat Datang di Halaman Utama</h2>
-        <p>Website ini adalah Tugas 01 untuk mata kuliah Desain Web. Website ini berisi informasi singkat tentang saya dan detail kontak saya, yang dapat diakses melalui menu navigasi di atas.</p>
+
+        <section class="welcome-section">
+            <h2 class="typing-animasi">Welcome</h2>
+        </section>
         
-        <br>
-        
-        <h2>✨ Progressive Web App (PWA)</h2>
-        <p style="max-width: 800px; text-align: center; line-height: 1.8;">
-            Website ini kini telah ditingkatkan menjadi <strong>Progressive Web App (PWA)</strong>! 
-            Ini berarti Anda dapat menikmati pengalaman yang lebih baik seperti:
-        </p>
-        
-        <div style="max-width: 800px; margin: 1.5em auto; text-align: left;">
-            <h3 style="color: var(--accent-color); margin-bottom: 0.5em;">🚀 Keunggulan PWA:</h3>
-            <ul style="line-height: 2; list-style-position: inside;">
-                <li><strong>📱 Install ke Perangkat:</strong> Anda dapat menambahkan website ini ke homescreen ponsel atau desktop Anda, sehingga dapat diakses seperti aplikasi native tanpa perlu download dari app store.</li>
-                <li><strong>⚡ Loading Lebih Cepat:</strong> Setelah kunjungan pertama, halaman akan dimuat lebih cepat berkat teknologi caching yang menyimpan data di perangkat Anda.</li>
-                <li><strong>🔌 Bekerja Offline:</strong> Anda tetap dapat mengakses website ini meskipun koneksi internet terputus, karena konten telah tersimpan di cache.</li>
-                <li><strong>💾 Hemat Data:</strong> Dengan caching, website tidak perlu mengunduh ulang semua data setiap kali dibuka, sehingga menghemat kuota internet Anda.</li>
-            </ul>
+        <section class="pwa-section">
+            <h2>Progressive Web App (PWA)</h2>
             
-            <h3 style="color: var(--accent-color); margin-top: 1.5em; margin-bottom: 0.5em;">🛠️ Teknologi yang Digunakan:</h3>
-            <ul style="line-height: 2; list-style-position: inside;">
-                <li><strong>Web App Manifest:</strong> Mengonfigurasi nama, ikon, dan tampilan aplikasi.</li>
-                <li><strong>Service Worker:</strong> Script yang berjalan di background untuk mengelola cache dan memungkinkan fitur offline.</li>
-                <li><strong>Cache First Strategy:</strong> Strategi caching yang memprioritaskan konten dari cache untuk loading yang lebih cepat.</li>
-                <li><strong>HTTPS:</strong> Protokol keamanan yang diperlukan untuk menjalankan PWA.</li>
-            </ul>
-        </div>
-        
-        <p style="margin-top: 2em; font-size: 0.95em; color: var(--accent-color);">
-            💡 <em>Tip: Browser Anda mungkin akan menawarkan untuk "Install" atau "Tambahkan ke Beranda". Terima tawaran tersebut untuk pengalaman terbaik!</em>
-        </p>
+            <div class="pwa-info">
+                <h3>Keunggulan PWA:</h3>
+                <ul>
+                    <li><strong>Install ke Perangkat:</strong> Anda dapat menambahkan website ini ke homescreen ponsel atau desktop Anda, sehingga dapat diakses seperti aplikasi native tanpa perlu download dari app store.</li>
+                    <li><strong>Loading Lebih Cepat:</strong> Setelah kunjungan pertama, halaman akan dimuat lebih cepat berkat teknologi caching yang menyimpan data di perangkat Anda.</li>
+                    <li><strong>Bekerja Offline:</strong> Anda tetap dapat mengakses website ini meskipun koneksi internet terputus, karena konten telah tersimpan di cache.</li>
+                    <li><strong>Hemat Data:</strong> Dengan caching, website tidak perlu mengunduh ulang semua data setiap kali dibuka, sehingga menghemat kuota internet Anda.</li>
+                </ul>
+                <br>
+                <h3>Teknologi yang Digunakan:</h3>
+                <ul>
+                    <li><strong>Web App Manifest:</strong> Mengonfigurasi nama, ikon, dan tampilan aplikasi. File ini memberikan informasi penting kepada browser tentang bagaimana aplikasi harus ditampilkan dan berperilaku ketika ditambahkan ke homescreen perangkat pengguna</li>
+                    <li><strong>Service Worker:</strong> Script yang berjalan di background untuk mengelola cache dan memungkinkan fitur offline.</li>
+                    <li><strong>Cache First Strategy:</strong> Strategi caching yang memprioritaskan konten dari cache untuk loading yang lebih cepat.</li>
+                    <li><strong>HTTPS:</strong> Protokol komunikasi yang menggunakan enkripsi untuk mengamankan data yang ditransmisikan antara server dan klien. </li>
+                </ul>
+            </div>
+            
+            <p>
+                <em>Tip: Browser Anda mungkin akan menawarkan untuk "Install" atau "Tambahkan ke Beranda". Terima tawaran tersebut untuk pengalaman terbaik!</em>
+            </p>
+        </section>
     </main>
 
     <footer>

@@ -11,6 +11,11 @@
     padding: 0;
     text-decoration: none;
     list-style: none;
+    /* border: solid 0.3px black; */
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -82,11 +87,13 @@ main {
     overflow-y: auto;
 
     height: 85%;
+
+    scroll-snap-type: y mandatory;
 }
 
 main h2 {
     text-align: center;
-    margin-bottom: 1em;
+    /* margin-bottom: 1em; */
 }
 
 main p,
@@ -96,8 +103,61 @@ main ul {
     align-items: center;
     flex-direction: column;
     width: 100%;
-    text-align: left;
+
     line-height: 1.6;
+}
+
+.welcome-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    width: 100%;
+    background-color: var(--primary-color);
+
+    padding-bottom: 2.3em;
+}
+
+.welcome-section h2 {
+    justify-items: center;
+    text-transform: uppercase;
+    font-size: 8em;
+    overflow: hidden; 
+    border-right: .15em solid var(--accent-color); 
+    white-space: nowrap; 
+    margin: 0 auto; 
+    letter-spacing: .15em; 
+    animation: 
+        typing 3s steps(11, end),
+        blink-caret .5s step-end infinite;
+}
+
+.pwa-section {
+    /* background-color: var(--secondary-color); */
+    /* color: var(--primary-color); */
+    padding: 1em;
+    border-radius: 8px;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); */
+    max-width: 800px;
+    width: 90%;
+    box-sizing: border-box;
+    margin-bottom: 2em;
+}
+
+.pwa-section h2 {
+    text-align: center;
+    margin-top: 0;
+    font-size: 1.8em;
+    margin-bottom: 0.5em;
+}
+
+.pwa-info {
+    display: flex;
+    flex-direction: column;
+
+}
+.pwa-info ul li {
+    margin-bottom: 0.5em;
 }
 
 footer {
@@ -210,6 +270,8 @@ main.about-container {
     background-position: center center;
     background-repeat: no-repeat;
     background-blend-mode: overlay;
+    overflow-y: hidden;
+    overflow-x: hidden;
 
     position: relative;
     isolation: isolate;
@@ -221,7 +283,8 @@ main.about-container::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
+        border: solid 0.3px black;
+
     width: 100%;
     height: 100%;
     z-index: -1;
@@ -244,6 +307,10 @@ main.about-container::before {
         display: none;
     }
 
+    .welcome-section h2 {
+        font-size: 3em;
+    }
+
     main img {
         width: 200px; 
         max-width: 90%; 
@@ -264,4 +331,25 @@ main.about-container::before {
         text-align: center;
     }
     
+}
+
+main > section {
+    scroll-snap-align: start;
+}
+
+@media (max-width: 768px) {
+    .welcome-section h2 {
+        font-size: 4em;
+    }
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: var(--accent-color); }
 }
