@@ -1,5 +1,5 @@
-const CACHE_NAME = 'aufant-pwa-v2'; 
-const OFFLINE_PAGE = 'offline.html'; 
+const CACHE_NAME = 'aufant-pwa-v3'; // Naikkan versi cache untuk update
+const OFFLINE_PAGE = 'offline.html';
 
 const urlsToCache = [
   './',
@@ -15,78 +15,53 @@ const urlsToCache = [
 ];
 
 self.addEventListener('install', (event) => {
-  console.log('[Service Worker] Installing...');
-  
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then((cache) => {
-        console.log('[Service Worker] Caching app shell');
-        return cache.addAll(urlsToCache);
-      })
-      .then(() => {
-        console.log('[Service Worker] Installation complete');
-        return self.skipWaiting();
-      })
-      .catch((error) => {
-        console.error('[Service Worker] Installation failed:', error);
-      })
+      .then((cache) => cache.addAll(urlsToCache))
+      .then(() => self.skipWaiting())
   );
 });
 
 self.addEventListener('activate', (event) => {
-  console.log('[Service Worker] Activating...');
-  
   event.waitUntil(
     caches.keys()
       .then((cacheNames) => {
         return Promise.all(
           cacheNames.map((cacheName) => {
             if (cacheName !== CACHE_NAME) {
-              console.log('[Service Worker] Deleting old cache:', cacheName);
               return caches.delete(cacheName);
             }
           })
         );
       })
-      .then(() => {
-        console.log('[Service Worker] Activation complete');
-        return self.clients.claim(); 
-      })
+      .then(() => self.clients.claim())
   );
 });
 
 self.addEventListener('fetch', (event) => {
-  if (event.request.method !== 'GET') {
-    return;
-  }
-
-  event.respondWith(
-    caches.match(event.request)
-      .then((cachedResponse) => {
-        if (cachedResponse) {
-          return cachedResponse;
-        }
-
-        return fetch(event.request)
-          .then((response) => {
-            if (!response || response.status !== 200 || response.type !== 'basic') {
-              return response;
-            }
-
-            const responseToCache = response.clone();
-            
-            caches.open(CACHE_NAME)
-              .then((cache) => {
-                cache.put(event.request, responseToCache);
-              });
-
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request)
+        .then((response) => {
+          // Jika response sukses, gunakan itu
+          if (response.ok) {
             return response;
-          })
-          .catch(() => {
-            if (event.request.mode === 'navigate') {
-              return caches.match(OFFLINE_PAGE);
-            }
-          });
-      })
-  );
+          }
+          // Jika response adalah 404 atau error server lainnya, tampilkan halaman offline
+          return caches.match(OFFLINE_PAGE);
+        })
+        .catch(() => {
+          // Jika fetch gagal total (tidak ada koneksi), tampilkan halaman offline
+          return caches.match(OFFLINE_PAGE);
+        })
+    );
+  } else {
+    // Untuk aset lain (CSS, gambar), gunakan strategi Cache First
+    event.respondWith(
+      caches.match(event.request)
+        .then((cachedResponse) => {
+          return cachedResponse || fetch(event.request);
+        })
+    );
+  }
 });
