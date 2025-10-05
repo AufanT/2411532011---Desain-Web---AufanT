@@ -63,30 +63,18 @@
 
     <!-- Service Worker Registration -->
     <script>
-        // Registrasi Service Worker
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./service-worker.js')
-                    .then((registration) => {
-                        console.log('✅ Service Worker registered successfully:', registration.scope);
-                        
-                        // Cek update service worker
-                        registration.addEventListener('updatefound', () => {
-                            console.log('🔄 Service Worker update found!');
-                        });
-                    })
-                    .catch((error) => {
-                        console.error('❌ Service Worker registration failed:', error);
-                    });
+        // Register Service Worker
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('service-worker.js')
+            .then((registration) => {
+              console.log('✅ Service Worker registered successfully:', registration.scope);
+            })
+            .catch((error) => {
+              console.error('❌ Service Worker registration failed:', error);
             });
-
-            // Deteksi ketika service worker siap
-            navigator.serviceWorker.ready.then(() => {
-                console.log('✅ Service Worker is ready');
-            });
-        } else {
-            console.warn('⚠️ Service Worker is not supported in this browser');
-        }
+        });
+      }
     </script>
 </body>
 </html>
