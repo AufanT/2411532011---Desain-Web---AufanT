@@ -1,14 +1,17 @@
-const CACHE_NAME = 'aufant-pwa-v1';
-const OFFLINE_PAGE = '/offline.html';
+const CACHE_NAME = 'aufant-pwa-v2'; 
+const OFFLINE_PAGE = 'offline.html'; 
 
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/about.html',
-  '/contact.html',
-  '/offline.html',
-  '/styles.css',
-  '/profile.png'
+  './',
+  'index.html',
+  'about.html',
+  'contact.html',
+  'offline.html',
+  'styles.css',
+  'profile.png',
+  'icon.png',
+  'icon2.png',
+  'favicon.ico'
 ];
 
 self.addEventListener('install', (event) => {
@@ -53,7 +56,6 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-  
   if (event.request.method !== 'GET') {
     return;
   }
@@ -61,24 +63,17 @@ self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request)
       .then((cachedResponse) => {
-        
         if (cachedResponse) {
-          console.log('[Service Worker] Serving from cache:', event.request.url);
           return cachedResponse;
         }
 
-        
-        console.log('[Service Worker] Fetching from network:', event.request.url);
         return fetch(event.request)
           .then((response) => {
-            d
             if (!response || response.status !== 200 || response.type !== 'basic') {
               return response;
             }
 
-            
             const responseToCache = response.clone();
-
             
             caches.open(CACHE_NAME)
               .then((cache) => {
@@ -87,17 +82,10 @@ self.addEventListener('fetch', (event) => {
 
             return response;
           })
-          .catch((error) => {
-            console.error('[Service Worker] Fetch failed:', error);
-            
+          .catch(() => {
             if (event.request.mode === 'navigate') {
               return caches.match(OFFLINE_PAGE);
             }
-            
-            return new Response('Network error', {
-              status: 408,
-              headers: { 'Content-Type': 'text/plain' }
-            });
           });
       })
   );

@@ -2,7 +2,7 @@
   "name": "AufanT - Personal Website",
   "short_name": "AufanT",
   "description": "Website profil Aufan Taufiqurrahman - Mahasiswa Universitas Andalas",
-  "start_url": "/",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#2B2B2B",
   "theme_color": "#942428",
@@ -15,9 +15,9 @@
       "purpose": "any maskable"
     },
     {
-      "src": "icon2.jpg",
+      "src": "icon2.png",
       "sizes": "512x512",
-      "type": "image/jpeg",
+      "type": "image/png",
       "purpose": "any maskable"
     }
   ]
