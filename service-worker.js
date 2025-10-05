@@ -82,51 +82,81 @@ self.addEventListener('fetch', (event) => {
                 <!DOCTYPE html>
                 <html>
                 <head>
-                  <meta charset="UTF-8">
-                  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                  <title>Offline</title>
-                  <style>
-                    body {
-                      font-family: Arial, sans-serif;
-                      display: flex;
-                      justify-content: center;
-                      align-items: center;
-                      min-height: 100vh;
-                      margin: 0;
-                      background: linear-gradient(to right, #6A89A7, #BDDDFC);
-                      text-align: center;
-                      padding: 20px;
-                    }
-                    .container {
-                      background: white;
-                      padding: 40px;
-                      border-radius: 20px;
-                      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-                    }
-                    h1 { color: #384959; margin-bottom: 20px; }
-                    button {
-                      background: #384959;
-                      color: white;
-                      border: none;
-                      padding: 12px 24px;
-                      border-radius: 8px;
-                      cursor: pointer;
-                      font-size: 16px;
-                      margin-top: 20px;
-                    }
-                    button:hover { background: #2b3642; }
-                  </style>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Offline - AufanT</title>
+                    <link rel="stylesheet" href="styles.css">
+                    <style>
+                        .offline-container {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+                            text-align: center;
+                            padding: 2em;
+                            min-height: 70vh;
+                        }
+
+                        .offline-icon {
+                            font-size: 5em;
+                            margin-bottom: 0.5em;
+                        }
+
+                        .offline-container h2 {
+                            color: var(--accent-color);
+                            margin-bottom: 0.5em;
+                        }
+
+                        .offline-container p {
+                            margin-bottom: 1em;
+                            max-width: 500px;
+                        }
+
+                        .btn-retry {
+                            background-color: var(--accent-color);
+                            color: var(--primary-color);
+                            border: none;
+                            padding: 0.75em 2em;
+                            border-radius: 4px;
+                            font-size: 1em;
+                            font-weight: bold;
+                            cursor: pointer;
+                            transition: background-color 0.3s ease;
+                            margin-top: 1em;
+                        }
+
+                        .btn-retry:hover {
+                            background-color: #7a1f22;
+                        }
+                    </style>
                 </head>
                 <body>
-                  <div class="container">
-                    <h1>🔌 Anda Sedang Offline</h1>
-                    <p>Tidak dapat terhubung ke internet.</p>
-                    <p>Silakan periksa koneksi Anda dan coba lagi.</p>
-                    <button onclick="window.location.reload()">🔄 Coba Lagi</button>
-                  </div>
+                    <header>
+                        <h1>Offline</h1>
+                        <nav>
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="about.html">About</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </nav>
+                    </header>
+
+                    <main>
+                        <div class="offline-container">
+                            <div class="offline-icon">📡❌</div>
+                            <h2>Tidak Ada Koneksi Internet</h2>
+                            <p>Maaf, sepertinya Anda sedang offline. Halaman ini memerlukan koneksi internet untuk dimuat.</p>
+                            <p>Silakan periksa koneksi internet Anda dan coba lagi.</p>
+                            <button class="btn-retry" onclick="window.location.reload()">Coba Lagi</button>
+                        </div>
+                    </main>
+
+                    <footer>
+                        <p>&copy; 2025 Aufan Taufiqurrahman</p>
+                    </footer>
                 </body>
-                </html>
-              `, {
+                </html>`, {
                 headers: { 'Content-Type': 'text/html' }
               });
             });
