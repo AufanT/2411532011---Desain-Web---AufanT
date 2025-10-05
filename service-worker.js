@@ -1,4 +1,4 @@
-const CACHE_NAME = 'aufant-pwa-v3'; // Naikkan versi cache untuk update
+const CACHE_NAME = 'aufant-pwa-v3';
 const OFFLINE_PAGE = 'offline.html';
 
 const urlsToCache = [
