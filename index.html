@@ -63,59 +63,48 @@
         <p>&copy; 2025 Aufan Taufiqurrahman</p>
     </footer>
 
-    <!-- Service Worker Registration -->
     <script>
-  // 1. Registrasi Service Worker
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('service-worker.js')
-        .then((registration) => {
-          console.log('✅ Service Worker registered successfully:', registration.scope);
-        })
-        .catch((error) => {
-          console.error('❌ Service Worker registration failed:', error);
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('service-worker.js')
+                .then((registration) => {
+                    console.log('✅ Service Worker registered successfully:', registration.scope);
+                })
+                .catch((error) => {
+                    console.error('❌ Service Worker registration failed:', error);
+                });
+            });
+        }
+    
+        let deferredPrompt;
+        const installButton = document.getElementById('install-button');
+    
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            if (installButton) {
+                installButton.style.display = 'block';
+            }
+            console.log('👍 `beforeinstallprompt` event was fired.');
         });
-    });
-  }
-
-  // 2. Logika untuk menangani event 'beforeinstallprompt'
-  let deferredPrompt;
-  const installButton = document.getElementById('install-button');
-
-  window.addEventListener('beforeinstallprompt', (e) => {
-    // Mencegah browser menampilkan prompt otomatis
-    e.preventDefault();
-    // Simpan event untuk digunakan nanti
-    deferredPrompt = e;
-    // Tampilkan tombol install kustom Anda
-    if (installButton) {
-      installButton.style.display = 'block';
-    }
-    console.log('👍 `beforeinstallprompt` event was fired.');
-  });
-
-  if (installButton) {
-    installButton.addEventListener('click', async () => {
-      // Sembunyikan tombol install kita, karena prompt akan muncul
-      installButton.style.display = 'none';
-      // Tampilkan prompt instalasi
-      deferredPrompt.prompt();
-      // Tunggu pengguna merespons prompt
-      const { outcome } = await deferredPrompt.userChoice;
-      console.log(`User response to the install prompt: ${outcome}`);
-      // Kita tidak bisa menggunakan prompt ini lagi, jadi kita bersihkan
-      deferredPrompt = null;
-    });
-  }
-
-  window.addEventListener('appinstalled', () => {
-    // Sembunyikan tombol install jika aplikasi sudah terinstall
-    if (installButton) {
-        installButton.style.display = 'none';
-    }
-    deferredPrompt = null;
-    console.log('🎉 PWA was installed');
-  });
-</script>
+    
+        if (installButton) {
+            installButton.addEventListener('click', async () => {
+                installButton.style.display = 'none';
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                console.log(`User response to the install prompt: ${outcome}`);
+                deferredPrompt = null;
+            });
+        }
+    
+        window.addEventListener('appinstalled', () => {
+            if (installButton) {
+                installButton.style.display = 'none';
+            }
+            deferredPrompt = null;
+            console.log('🎉 PWA was installed');
+        });
+    </script>
 </body>
 </html>
