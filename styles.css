@@ -299,6 +299,22 @@ main.about-container::before {
 
     filter: blur(10px);
 }
+main > section {
+    scroll-snap-align: start;
+}
+
+.installButton {
+    background: var(--accent-color);
+    color: var(--primary-color);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+    margin-top: 20px;
+    margin-left: 50px;
+}
 
 /* tampilan hp */
 @media (max-width: 450px) {
@@ -333,9 +349,6 @@ main.about-container::before {
     
 }
 
-main > section {
-    scroll-snap-align: start;
-}
 
 @media (max-width: 768px) {
     .welcome-section h2 {
