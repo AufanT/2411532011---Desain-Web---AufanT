@@ -303,7 +303,7 @@ main > section {
     scroll-snap-align: start;
 }
 
-.install-button {
+#install-button {
     background: var(--accent-color);
     color: var(--primary-color);
     border: none;
