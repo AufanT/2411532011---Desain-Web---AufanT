@@ -1,18 +1,30 @@
 const CACHE_NAME = 'aufant-pwa';
 const OFFLINE_PAGE = 'offline.html';
 
+const REPO_NAME = '/2411532011---Desain-Web---AufanT/';
 const urlsToCache = [
-  './',
-  'index.html',
-  'about.html',
-  'contact.html',
-  'offline.html',
-  'styles.css',
-  'profile.png',
-  'icon.png',
-  'icon2.png',
-  'favicon.ico'
+  REPO_NAME,
+  REPO_NAME + 'index.html',
+  REPO_NAME + 'about.html',
+  REPO_NAME + 'contact.html',
+  REPO_NAME + 'offline.html',
+  REPO_NAME + 'styles.css',
+  REPO_NAME + 'profile.png',
+  REPO_NAME + 'icon.png',
+  REPO_NAME + 'icon2.png',
+  REPO_NAME + 'favicon.ico'
 ];
+
+// './',
+//   'index.html',
+//   'about.html',
+//   'contact.html',
+//   'offline.html',
+//   'styles.css',
+//   'profile.png',
+//   'icon.png',
+//   'icon2.png',
+//   'favicon.ico'
 
 self.addEventListener('install', (event) => {
   console.log('[Service Worker] Installing...');
